@@ -8,6 +8,7 @@ import { ProductController } from './product/product.controller';
 import { ProductService } from './product/product.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductModule } from './product/product.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -15,7 +16,9 @@ import { ProductModule } from './product/product.module';
   
     MongooseModule.forRoot('mongodb://localhost/user-app', { useNewUrlParser: true }),
   
-    ProductModule
+    ProductModule,
+  
+    CartModule
   ],
   controllers: [AppController, 
     // UserController, ProductController
