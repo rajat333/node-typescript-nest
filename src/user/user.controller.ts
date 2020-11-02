@@ -1,7 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Req } from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UserService } from './user.service';
+import { JwtService } from '@nestjs/jwt';
 import { Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
+// import { AuthService } from '../auth/auth.service';
+import { LoginUserDTO } from './dto/login-user.dto';
 
 @Controller('user')
 export class UserController {
