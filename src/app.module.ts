@@ -14,7 +14,7 @@ import { CartModule } from './cart/cart.module';
   imports: [
     UserModule,
   
-    MongooseModule.forRoot('mongodb://localhost/user-app', { useNewUrlParser: true }),
+    MongooseModule.forRoot('mongodb://localhost/userapp', { useNewUrlParser: true }),
   
     ProductModule,
   

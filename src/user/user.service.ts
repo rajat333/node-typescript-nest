@@ -16,6 +16,11 @@ export class UserService {
         return await newUser.save();
     }
 
+    async findUserByEmail(email: string): Promise<any>{
+
+        return await this.userModel.find({ email: email }).exec();
+    }
+
     async getList(): Promise<any> {
         const users = await this.userModel.find().exec();
         return users;

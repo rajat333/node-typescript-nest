@@ -10,10 +10,18 @@ export class UserController {
 
     @Post('/create')
     async addCustomer(@Res() res, @Body() createUserDTO: CreateUserDTO) {
+        // email check if user exist
+        const userExist = await this.userService.findUserByEmail(createUserDTO.email);
+        if ( userExist ) {
+            return res.status(HttpStatus.CONFLICT).json({
+                message: `User already exist with email - ${ createUserDTO.email}`,
+                error: true,
+            });
+        }
         const customer = await this.userService.createUser(createUserDTO);
         return res.status(HttpStatus.OK).json({
             message: "User has been created successfully",
-            customer
+            ...customer
         })
     }
 
