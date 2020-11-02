@@ -11,7 +11,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     UserModule,
-    MongooseModule.forRoot('mongodb://localhost/customer-app', { useNewUrlParser: true })
+    MongooseModule.forRoot('mongodb://localhost/user-app', { useNewUrlParser: true })
   ],
   controllers: [AppController, UserController, ProductController],
   providers: [AppService, UserService, ProductService],
