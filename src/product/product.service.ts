@@ -14,5 +14,9 @@ export class ProductService {
         return await this.productModel.find().exec();
     }
 
+    async uploadProduct(createProduct: CreateProductDTO): Promise<CreateProductDTO> {
+        const product  = new this.productModel(createProduct);
+        return product.save();
+    }
 
 }
