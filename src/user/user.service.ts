@@ -23,7 +23,6 @@ export class UserService {
     }
 
     async existUser(loginUserDto: LoginUserDTO): Promise<any> {
-        console.log('login user dto ');
         return await this.userModel.find({
             email: loginUserDto.email,
         }).exec();

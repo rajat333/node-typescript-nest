@@ -10,11 +10,16 @@ export class ProductController {
 
     constructor( private productService: ProductService){}
 
-    @Get('list')
-    @UseGuards(AuthGuard())
-    async getProductList( @Body() createProductDto: CreateProductDTO, @Req() req: any){
-        console.log('>>>>>>>>>>>>user ', req.user);
+    @Post('/create')
+    @UseGuards(AuthGuard('jwt'))
+    async uploadProduct( @Body() createProductDto: CreateProductDTO, @Req() req: any){
         return this.productService.uploadProduct(createProductDto);
-        // return req.user
+    }
+
+    @Get('/list')
+    @UseGuards(AuthGuard('jwt'))
+    async getProductList(@Res() res) {
+       const list =  await this.productService.listAllProducts()
+       res.status(HttpStatus.OK).json(list)
     }
 }

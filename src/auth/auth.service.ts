@@ -25,7 +25,7 @@ export class AuthService {
     if( ! existUser ) {
         return null;
     } else {
-        const payload = { username:  existUser.email, sub: user._id };
+        const payload = { email:  existUser[0].email, userId: existUser[0]._id };
         return {
         access_token: this.jwtService.sign(payload),
         email: existUser[0].email,
