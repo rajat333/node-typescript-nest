@@ -25,8 +25,4 @@ export class UserController {
         })
     }
    
-    // @Get('/list')
-    // async getList() {
-    //     return  this.userService.getList();
-    // }
 }

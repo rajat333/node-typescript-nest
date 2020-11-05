@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from  './interface/user.interface';
 import { LoginUserDTO } from './dto/login-user.dto';
+import * as mongoose from 'mongoose';
 
 @Injectable()
 export class UserService {
@@ -31,5 +32,9 @@ export class UserService {
     async getList(): Promise<any> {
         const users = await this.userModel.find().exec();
         return users;
+    }
+
+    async findUserById( userId: string): Promise<User> {
+        return await this.userModel.find({ _id: mongoose.Types.ObjectId(userId) }).exec();
     }
 }
